@@ -1,0 +1,17 @@
+{
+    "name": "Core",
+    "alias": "core",
+    "description": "Starify Core module.",
+    "keywords": [],
+    "priority": 0,
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "providers": [
+        "Modules\\Core\\Providers\\CoreServiceProvider"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "core",
+    "version": 0.1,
+    "author": "Starify Co"
+}

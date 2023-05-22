@@ -1,0 +1,26 @@
+{
+    "name": "panicdevs/blogx-core-module",
+    "description": "BlogX Core module by PanicDevs",
+    "authors": [
+        {
+            "name": "PanicDevs",
+            "email": "help@panicdev.ir"
+        }
+    ],
+    "require": {
+        "morilog/jalali": "^v3.4",
+        "predis/predis": "^v2.0",
+        "prettus/l5-repository": "^2.8"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Core\\": ""
+        }
+    }
+}

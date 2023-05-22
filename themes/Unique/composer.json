@@ -1,0 +1,24 @@
+{
+    "name": "panicdevs/blogx-unique",
+    "type": "project",
+    "description": "BlogX default theme by PanicDevs.",
+    "keywords": ["blogx", "theme", "unique", "panicdevs"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "PanicDevs",
+            "email": "help@panicdev.ir"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Themes\\Unique\\": ""
+        }
+    }
+}

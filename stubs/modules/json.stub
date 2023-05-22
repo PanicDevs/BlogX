@@ -1,0 +1,17 @@
+{
+    "name": "$STUDLY_NAME$",
+    "alias": "$LOWER_NAME$",
+    "description": "BlogX $STUDLY_NAME$ module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "$MODULE_NAMESPACE$\\$STUDLY_NAME$\\$PROVIDER_NAMESPACE$\\$STUDLY_NAME$ServiceProvider"
+    ],
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "$LOWER_NAME$",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}

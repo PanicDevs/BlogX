@@ -1,0 +1,16 @@
+{
+    "name": "Filament",
+    "alias": "filament",
+    "description": "BlogX Filament module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Filament\\Providers\\FilamentServiceProvider"
+    ],
+    "files": [
+    ],
+    "minimumCoreVersion": "0",
+    "title": "filament",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}

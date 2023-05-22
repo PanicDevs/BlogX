@@ -1,0 +1,17 @@
+{
+    "name": "User",
+    "alias": "user",
+    "description": "BlogX User module.",
+    "keywords": [],
+    "priority": 10,
+    "providers": [
+        "Modules\\User\\Providers\\UserServiceProvider"
+    ],
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "user",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}

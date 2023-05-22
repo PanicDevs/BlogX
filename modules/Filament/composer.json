@@ -1,15 +1,16 @@
 {
-    "name": "panicdevs/blogx-unique-theme",
-    "type": "project",
-    "description": "BlogX default theme by PanicDevs.",
-    "keywords": ["blogx", "theme", "unique", "panicdevs"],
-    "license": "MIT",
+    "name": "panicdevs/blogx-filament-module",
+    "description": "BlogX Filament module by PanicDevs.",
     "authors": [
         {
             "name": "PanicDevs",
             "email": "help@panicdev.ir"
         }
     ],
+    "require": {
+        "filament/filament": "^v2.17",
+        "realmrhex/filament-modular": "^0.2"
+    },
     "extra": {
         "laravel": {
             "providers": [],
@@ -18,7 +19,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Themes\\Unique\\": ""
+            "Modules\\Filament\\": ""
         }
     }
 }

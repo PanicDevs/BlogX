@@ -1,7 +1,7 @@
 {
     "name": "Core",
     "alias": "core",
-    "description": "Starify Core module.",
+    "description": "BlogX Core module",
     "keywords": [],
     "priority": 0,
     "files": [
@@ -13,5 +13,5 @@
     "minimumCoreVersion": "0",
     "title": "core",
     "version": 0.1,
-    "author": "Starify Co"
+    "author": "PanicDevs Co"
 }

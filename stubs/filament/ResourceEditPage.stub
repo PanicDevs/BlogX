@@ -1,0 +1,32 @@
+<?php
+
+namespace {{ namespace }};
+
+use {{ resource }};
+use Filament\Pages\Actions;
+use Filament\Resources\Pages\EditRecord;
+use Throwable;
+
+class {{ resourcePageClass }} extends EditRecord
+{
+    /**
+     * Related Resource
+     *
+     * @var string $resource
+     */
+    protected static string $resource = {{ resourceClass }}::class;
+
+    /**
+     * Get the actions
+     *
+     * @return array
+     *
+     * @throws Throwable
+     */
+    protected function getActions(): array
+    {
+        return [
+{{ actions }}
+        ];
+    }
+}

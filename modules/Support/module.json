@@ -1,0 +1,17 @@
+{
+    "name": "Support",
+    "alias": "support",
+    "description": "BlogX Support module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Support\\Providers\\SupportServiceProvider"
+    ],
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "support",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}

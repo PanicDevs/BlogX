@@ -71,14 +71,56 @@ Customizing BlogX to match your branding and preferences is an important aspect.
 
 Stay tuned for updates on customization options!
 
-## Laravel Sail (Coming Soon) ⛵
-Running BlogX with Laravel Sail provides a simplified and convenient development environment using Docker. Instructions and configuration details for using Laravel Sail will be provided in the upcoming release.
+## Laravel Sail Instructions ⛵
 
-Stay tuned for updates on using Laravel Sail with BlogX!
+To provide a simplified and convenient development environment using Docker, BlogX now supports Laravel Sail. Follow the steps below to get started with Laravel Sail:
 
-Please note that these sections mention that detailed instructions for customization and Laravel Sail will be provided in the future. You can replace the existing customization section and add the new Laravel Sail section to your README.md file using the markdown code above.
+🚀 **Launching BlogX with Laravel Sail** 🚀
 
-Feel free to explore the codebase and make any necessary modifications to suit your requirements.
+1. Make sure you have Docker installed on your machine. If you don't have it, you can download and install it from the official Docker website: [https://www.docker.com](https://www.docker.com)
+
+2. Clone the BlogX repository to your local machine:
+
+```shell
+git clone https://github.com/panicdevs/blogx
+```
+
+3. Navigate to the project directory:
+
+```shell
+cd blogx
+```
+
+4. Copy the `.env.example` file and rename it to `.env`:
+
+```shell
+cp .env.example .env
+```
+
+5. Open the `.env` file and configure the necessary environment variables according to your local setup.
+
+6. Run the following command to start Laravel Sail:
+
+```shell
+./vendor/bin/sail up -d
+```
+
+7. Once the containers are up and running, you can access BlogX in your web browser by visiting [http://localhost](http://localhost).
+
+🔧 **Customization and Configuration**
+
+You can further customize and configure BlogX to meet your specific requirements. Refer to the official Laravel documentation for more information on customization options: [https://laravel.com/docs](https://laravel.com/docs)
+
+🔍 **Next Steps**
+
+Stay tuned for updates on additional features and advanced usage of Laravel Sail with BlogX! We will provide more detailed instructions and configuration details in the upcoming release.
+
+Please note that Laravel Sail provides a streamlined local development environment and is not intended for production use.
+
+Feel free to explore the codebase, make modifications, and contribute to the project to suit your needs. We appreciate your support!
+
+Let me know if you need any further assistance. Happy sailing! ⛵🌊
+
 
 ## Contributing 👥
 

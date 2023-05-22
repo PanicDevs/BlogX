@@ -51,6 +51,7 @@
         },
         "merge-plugin": {
             "require": [
+                "modules/*/composer.json",
                 "themes/*/composer.json"
             ],
             "recurse": true,

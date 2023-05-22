@@ -1,15 +1,15 @@
 {
-    "name": "panicdevs/blogx-unique-theme",
-    "type": "project",
-    "description": "BlogX default theme by PanicDevs.",
-    "keywords": ["blogx", "theme", "unique", "panicdevs"],
-    "license": "MIT",
+    "name": "panicdevs/blogx-theme-module",
+    "description": "BlogX Theme module by PanicDevs",
     "authors": [
         {
             "name": "PanicDevs",
             "email": "help@panicdev.ir"
         }
     ],
+    "require": {
+        "qirolab/laravel-themer": "^2.1"
+    },
     "extra": {
         "laravel": {
             "providers": [],
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Themes\\Unique\\": ""
+            "Modules\\Theme\\": ""
         }
     }
 }

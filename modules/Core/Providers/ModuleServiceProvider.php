@@ -62,8 +62,8 @@ class ModuleServiceProvider extends ServiceProvider
     {
         collect(
             [
-                'config'              => "{$module->getPath()}/Config/config.php",
-                'permissions'         => "{$module->getPath()}/Config/permissions.php",
+                'config'   => "{$module->getPath()}/Config/config.php",
+                'filament' => "{$module->getPath()}/Config/filament.php",
             ])
             ->filter(function ($path)
             {

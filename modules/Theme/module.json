@@ -1,0 +1,17 @@
+{
+    "name": "Theme",
+    "alias": "theme",
+    "description": "BlogX Theme module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Theme\\Providers\\ThemeServiceProvider"
+    ],
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "theme",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}

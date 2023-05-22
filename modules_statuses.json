@@ -1,3 +1,7 @@
 {
-    "Core": true
+    "Core": true,
+    "Theme": true,
+    "User": true,
+    "Support": true,
+    "Filament": true
 }

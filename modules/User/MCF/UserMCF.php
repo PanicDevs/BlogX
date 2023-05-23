@@ -16,4 +16,7 @@ class UserMCF
     public const ACCOUNT_STATUS      = 'account_status';
     public const LIMITATION_END_DATE = 'limitation_end_date';
     public const REMEMBER_TOKEN      = 'remember_token';
+    public const CREATED_AT          = 'created_at';
+    public const UPDATED_AT          = 'updated_at';
+    public const DELETED_AT          = 'deleted_at';
 }

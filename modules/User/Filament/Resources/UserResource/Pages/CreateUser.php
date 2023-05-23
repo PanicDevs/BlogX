@@ -2,8 +2,8 @@
 
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
+use Filament\Resources\Form;
 use Modules\User\Filament\Resources\UserResource;
-use Filament\Pages\Actions;
 use Filament\Resources\Pages\CreateRecord;
 
 class CreateUser extends CreateRecord
@@ -14,4 +14,9 @@ class CreateUser extends CreateRecord
      * @var string $resource
      */
     protected static string $resource = UserResource::class;
+
+    protected function form(Form $form): Form
+    {
+        return $form->schema(UserResource::formSchema());
+    }
 }

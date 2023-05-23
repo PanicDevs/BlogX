@@ -3,9 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use Modules\User\DTO\UserDTO;
-use Modules\User\Enums\AccountStatus;
-use Modules\User\Enums\AccountType;
+use Modules\User\MCF\UserMCF;
 
 return new class extends Migration {
     /**
@@ -18,17 +16,17 @@ return new class extends Migration {
         Schema::create('users', function (Blueprint $table)
         {
             $table->id();
-            $table->string(UserDTO::EMAIL)->unique();
-            $table->string(UserDTO::PASSWORD)->nullable();
-            $table->string(UserDTO::AVATAR_IMAGE_URL)->nullable();
-            $table->string(UserDTO::FIRST_NAME)->nullable();
-            $table->string(UserDTO::LAST_NAME)->nullable();
-            $table->string(UserDTO::FULL_NAME)->virtualAs("concat(" . UserDTO::FIRST_NAME . ", ' ', " . UserDTO::LAST_NAME . ")");
-            $table->tinyText(UserDTO::BIO)->nullable();
-            $table->tinyText(UserDTO::MESSAGE)->nullable();
-            $table->tinyInteger(UserDTO::ACCOUNT_TYPE);
-            $table->tinyInteger(UserDTO::ACCOUNT_STATUS);
-            $table->timestamp(UserDTO::LIMITATION_END_DATE)->nullable();
+            $table->string(UserMCF::EMAIL)->unique();
+            $table->string(UserMCF::PASSWORD)->nullable();
+            $table->string(UserMCF::AVATAR_IMAGE_URL)->nullable();
+            $table->string(UserMCF::FIRST_NAME)->nullable();
+            $table->string(UserMCF::LAST_NAME)->nullable();
+            $table->string(UserMCF::FULL_NAME)->virtualAs("concat(" . UserMCF::FIRST_NAME . ", ' ', " . UserMCF::LAST_NAME . ")");
+            $table->tinyText(UserMCF::BIO)->nullable();
+            $table->tinyText(UserMCF::MESSAGE)->nullable();
+            $table->tinyInteger(UserMCF::ACCOUNT_TYPE);
+            $table->tinyInteger(UserMCF::ACCOUNT_STATUS);
+            $table->timestamp(UserMCF::LIMITATION_END_DATE)->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

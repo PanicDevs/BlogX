@@ -3,13 +3,12 @@
 namespace Modules\User\Entities;
 
 use Filament\Models\Contracts\FilamentUser;
-use Filament\Models\Contracts\HasAvatar;
 use Filament\Models\Contracts\HasName;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Modules\User\DTO\UserDTO;
 use Modules\User\Enums\AccountStatus;
 use Modules\User\Enums\AccountType;
+use Modules\User\MCF\UserMCF;
 
 class User extends Authenticatable implements FilamentUser, HasName
 {
@@ -21,17 +20,17 @@ class User extends Authenticatable implements FilamentUser, HasName
      * @var array<int, string>
      */
     protected $fillable = [
-        UserDTO::EMAIL,
-        UserDTO::PASSWORD,
-        UserDTO::AVATAR_IMAGE_URL,
-        UserDTO::FIRST_NAME,
-        UserDTO::LAST_NAME,
-        UserDTO::FULL_NAME,
-        UserDTO::BIO,
-        UserDTO::MESSAGE,
-        UserDTO::ACCOUNT_TYPE,
-        UserDTO::ACCOUNT_STATUS,
-        UserDTO::LIMITATION_END_DATE,
+        UserMCF::EMAIL,
+        UserMCF::PASSWORD,
+        UserMCF::AVATAR_IMAGE_URL,
+        UserMCF::FIRST_NAME,
+        UserMCF::LAST_NAME,
+        UserMCF::FULL_NAME,
+        UserMCF::BIO,
+        UserMCF::MESSAGE,
+        UserMCF::ACCOUNT_TYPE,
+        UserMCF::ACCOUNT_STATUS,
+        UserMCF::LIMITATION_END_DATE,
     ];
 
     /**
@@ -40,8 +39,8 @@ class User extends Authenticatable implements FilamentUser, HasName
      * @var array<int, string>
      */
     protected $hidden = [
-        UserDTO::PASSWORD,
-        UserDTO::REMEMBER_TOKEN,
+        UserMCF::PASSWORD,
+        UserMCF::REMEMBER_TOKEN,
     ];
 
     /**
@@ -50,9 +49,9 @@ class User extends Authenticatable implements FilamentUser, HasName
      * @var array<string, string>
      */
     protected $casts = [
-        UserDTO::ACCOUNT_TYPE        => AccountType::class,
-        UserDTO::ACCOUNT_STATUS      => AccountStatus::class,
-        UserDTO::LIMITATION_END_DATE => 'datetime',
+        UserMCF::ACCOUNT_TYPE        => AccountType::class,
+        UserMCF::ACCOUNT_STATUS      => AccountStatus::class,
+        UserMCF::LIMITATION_END_DATE => 'datetime',
     ];
 
     /**
@@ -63,10 +62,10 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function canAccessFilament(): bool
     {
         return in_array(
-                $this->getAttribute(UserDTO::ACCOUNT_TYPE),
+                $this->getAttribute(UserMCF::ACCOUNT_TYPE),
                 [AccountType::Admin, AccountType::Blogger],
             )
-            && $this->getAttribute(UserDTO::ACCOUNT_STATUS) === AccountStatus::Free;
+            && $this->getAttribute(UserMCF::ACCOUNT_STATUS) === AccountStatus::Free;
     }
 
     /**

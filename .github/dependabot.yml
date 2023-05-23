@@ -1,0 +1,26 @@
+version: 2
+updates:
+  - package-ecosystem: "composer"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests: false
+    target-branch: "develop"
+    labels:
+      - "dependencies"
+  - package-ecosystem: "composer"
+    directory: "modules/*/composer.json"
+    schedule:
+      interval: "weekly"
+    open-pull-requests: false
+    target-branch: "develop"
+    labels:
+      - "dependencies"
+  - package-ecosystem: "composer"
+    directory: "themes/*/composer.json"
+    schedule:
+      interval: "weekly"
+    open-pull-requests: false
+    target-branch: "develop"
+    labels:
+      - "dependencies"

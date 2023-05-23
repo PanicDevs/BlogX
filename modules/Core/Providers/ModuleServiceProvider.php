@@ -4,6 +4,7 @@ namespace Modules\Core\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
+use Nwidart\Modules\Commands\SeedCommand;
 use Nwidart\Modules\Laravel\Module;
 
 class ModuleServiceProvider extends ServiceProvider

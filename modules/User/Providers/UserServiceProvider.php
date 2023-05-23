@@ -4,6 +4,7 @@ namespace Modules\User\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Modules\User\Contracts\UserRepository;
+use Modules\User\Database\Seeders\UserTableSeeder;
 use Modules\User\Repositories\UserEloquentRepository;
 
 class UserServiceProvider extends ServiceProvider

@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\User\DTO;
+namespace Modules\User\MCF;
 
-class UserDTO
+class UserMCF
 {
     public const EMAIL               = 'email';
     public const PASSWORD            = 'password';

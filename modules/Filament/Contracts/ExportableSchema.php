@@ -9,9 +9,11 @@ interface ExportableSchema
     /**
      * Get the form schema
      *
+     * @param ?string $section
+     *
      * @return array
      */
-    public static function formSchema(): array;
+    public static function formSchema(string $section = null): array;
 
     /**
      * Get the table schema

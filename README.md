@@ -2,6 +2,15 @@
 
 BlogX is a sleek and customizable white label TALL-Stack blog powered by @FilamentPHP. It incorporates the popular technologies such as Laravel, Livewire, Alpine.js, and Tailwind CSS to provide a seamless and modern blogging experience.
 
+🚧 Under Construction 🚧
+Please note that BlogX is currently under active development and certain features and sections mentioned in this README are still under construction. We are working diligently to bring you an exceptional and fully functional blogging experience.
+
+During this phase, you may encounter incomplete features, limited functionality, or placeholder content. We appreciate your patience and understanding as we strive to deliver a high-quality product.
+
+Stay tuned for updates and follow our progress as we continue to enhance BlogX. Your feedback and suggestions are valuable to us as we shape the future of this project.
+
+Thank you for your support and for choosing BlogX!
+
 ## Features ✨
 
 📌 **TALL Stack**: BlogX is built on the TALL Stack, a powerful combination of Laravel, Livewire, Alpine.js, and Tailwind CSS.

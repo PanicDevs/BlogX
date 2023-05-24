@@ -1,11 +1,17 @@
 <?php
 
 use Modules\User\MCF\UserMCF;
+use Modules\User\Schema\UserSchema;
 
 return [
+    UserMCF::USERNAME => [
+        'label'       => 'Username',
+        'placeholder' => 'Enter your username',
+    ],
+
     UserMCF::EMAIL => [
         'label'       => 'Email',
-        'placeholder' => ' Enter your email',
+        'placeholder' => 'Enter your email',
     ],
 
     UserMCF::PASSWORD => [
@@ -13,23 +19,28 @@ return [
         'placeholder' => 'Enter an strong password',
     ],
 
-    UserMCF::AVATAR_IMAGE_URL => [
+    UserMCF::PASSWORD_CONFIRMED => [
+        'label'       => 'Password confirmation',
+        'placeholder' => 'Enter your password again',
+    ],
+
+    UserMCF::AVATAR => [
         'label'       => 'Avatar',
         'placeholder' => 'Select your avatar',
     ],
 
     UserMCF::FIRST_NAME => [
-        'label'       => 'First Name',
+        'label'       => 'First name',
         'placeholder' => 'Enter your first name',
     ],
 
     UserMCF::LAST_NAME => [
-        'label'       => 'Last Name',
+        'label'       => 'Last name',
         'placeholder' => 'Enter your last name',
     ],
 
     UserMCF::FULL_NAME => [
-        'label'       => 'Full Name',
+        'label'       => 'Full name',
         'placeholder' => 'Enter your full name',
     ],
 
@@ -44,37 +55,52 @@ return [
     ],
 
     UserMCF::ACCOUNT_TYPE => [
-        'label'       => 'Account Type',
+        'label'       => 'Account type',
         'placeholder' => 'Select your account type',
     ],
 
     UserMCF::ACCOUNT_STATUS => [
-        'label'       => 'Account Status',
+        'label'       => 'Account status',
         'placeholder' => 'Select your account status',
     ],
 
     UserMCF::LIMITATION_END_DATE => [
-        'label'       => 'Limitation End Date',
+        'label'       => 'Limitation end date',
         'placeholder' => 'Select the end date of the limitation',
     ],
 
     UserMCF::REMEMBER_TOKEN => [
-        'label'       => 'Remember Token',
+        'label'       => 'Remember token',
         'placeholder' => 'Your remember token',
     ],
 
     UserMCF::CREATED_AT => [
-        'label'       => 'Created At',
+        'label'       => 'Created at',
         'placeholder' => 'Select the creation date',
     ],
 
     UserMCF::UPDATED_AT => [
-        'label'       => 'Updated At',
+        'label'       => 'Last modified at',
         'placeholder' => 'Select the update date',
     ],
 
     UserMCF::DELETED_AT => [
-        'label'       => 'Deleted At',
+        'label'       => 'Deleted at',
         'placeholder' => 'Select the deletion date',
+    ],
+
+    UserSchema::PERSONAL_INFO => [
+        'label'       => 'Personal info',
+        'description' => 'Select the deletion date',
+    ],
+
+    UserSchema::ACCOUNT_INFO => [
+        'label'       => 'Account info',
+        'description' => 'Select the deletion date',
+    ],
+
+    UserSchema::ACCOUNT_TYPE => [
+        'label'       => 'Account type',
+        'description' => 'Select the deletion date',
     ],
 ];

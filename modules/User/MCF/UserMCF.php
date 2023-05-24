@@ -5,8 +5,10 @@ namespace Modules\User\MCF;
 class UserMCF
 {
     public const EMAIL               = 'email';
+    public const USERNAME            = 'username';
     public const PASSWORD            = 'password';
-    public const AVATAR_IMAGE_URL    = 'avatar_image_url';
+    public const PASSWORD_CONFIRMED  = self::PASSWORD . '_confirmation';
+    public const AVATAR              = 'avatar_image_url';
     public const FIRST_NAME          = 'first_name';
     public const LAST_NAME           = 'last_name';
     public const FULL_NAME           = 'full_name';

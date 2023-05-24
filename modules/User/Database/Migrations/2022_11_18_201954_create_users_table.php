@@ -17,8 +17,9 @@ return new class extends Migration {
         {
             $table->id();
             $table->string(UserMCF::EMAIL)->unique();
+            $table->string(UserMCF::USERNAME)->unique();
             $table->string(UserMCF::PASSWORD)->nullable();
-            $table->string(UserMCF::AVATAR_IMAGE_URL)->nullable();
+            $table->string(UserMCF::AVATAR)->nullable();
             $table->string(UserMCF::FIRST_NAME)->nullable();
             $table->string(UserMCF::LAST_NAME)->nullable();
             $table->string(UserMCF::FULL_NAME)->virtualAs("concat(" . UserMCF::FIRST_NAME . ", ' ', " . UserMCF::LAST_NAME . ")");

@@ -4,6 +4,7 @@ namespace Modules\Filament\Providers;
 
 use Closure;
 use Filament\Forms\Components\ColorPicker;
+use Filament\Forms\Components\Component;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\Field;
@@ -17,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Tables\Columns\Column;
 use Illuminate\Support\ServiceProvider;
+use Throwable;
 
 class FilamentServiceProvider extends ServiceProvider
 {
@@ -48,9 +50,25 @@ class FilamentServiceProvider extends ServiceProvider
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->label = __($module . '::attribute.' . $this->getName() . '.label');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->label = __($module . '::attribute.' . $key . '.label');
+            }
+            catch (Throwable)
+            {
+                $this->label = 'Undefined';
+            }
             return $this;
         });
         Field::macro('autoLabel', function (string $trans = null): self
@@ -61,9 +79,54 @@ class FilamentServiceProvider extends ServiceProvider
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->label = __($module . '::attribute.' . $this->getName() . '.label');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->label = __($module . '::attribute.' . $key . '.label');
+            }
+            catch (Throwable)
+            {
+                $this->label = 'Undefined';
+            }
+            return $this;
+        });
+        Component::macro('autoLabel', function (string $trans = null): self
+        {
+            if ($trans)
+            {
+                $this->label = $trans;
+                return $this;
+            }
+
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->label = __($module . '::attribute.' . $key . '.label');
+            }
+            catch (Throwable)
+            {
+                $this->label = 'Undefined';
+            }
             return $this;
         });
 
@@ -71,143 +134,330 @@ class FilamentServiceProvider extends ServiceProvider
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         Select::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         FileUpload::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         DateTimePicker::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         DatePicker::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         TimePicker::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         RichEditor::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         MarkdownEditor::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         TagsInput::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         Textarea::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
         ColorPicker::macro('autoPlaceholder', function (string $trans = null): self
         {
             if ($trans)
             {
-                $this->placeholder = $trans;
+                $this->label = $trans;
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         });
     }
@@ -219,7 +469,7 @@ class FilamentServiceProvider extends ServiceProvider
      */
     private function addAutoLabelAbility(): void
     {
-        $classes = [Column::class, Field::class];
+        $classes = [Column::class, Field::class, Component::class];
 
         foreach ($classes as $class)
             $class::macro('autoLabel', $this->autoLabelAbility());
@@ -265,9 +515,25 @@ class FilamentServiceProvider extends ServiceProvider
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->label = __($module . '::attribute.' . $this->getName() . '.label');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->label = __($module . '::attribute.' . $key . '.label');
+            }
+            catch (Throwable)
+            {
+                $this->label = 'Undefined';
+            }
             return $this;
         })(...);
     }
@@ -287,9 +553,26 @@ class FilamentServiceProvider extends ServiceProvider
                 return $this;
             }
 
-            $backtrace = debug_backtrace();
-            $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
-            $this->placeholder = __($module . '::attribute.' . $this->getName() . '.placeholder');
+            try
+            {
+                try
+                {
+                    $key = $this->getName();
+                }
+                catch (Throwable)
+                {
+                    $key = $this->getLabel();
+                }
+
+                $backtrace = debug_backtrace();
+                $module = strtolower(explode('\\', $backtrace[2]['class'])[1]);
+                $this->placeholder = __($module . '::attribute.' . $key . '.placeholder');
+            }
+            catch (Throwable)
+            {
+                $this->placeholder = 'Undefined';
+            }
+
             return $this;
         })(...);
     }

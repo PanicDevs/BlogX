@@ -53,4 +53,14 @@ trait WithEnumHelper
     {
         return __(self::moduleName() . '::enum.' . self::shortName() . '.' . Str::snake($this->name));
     }
+
+    /**
+     * Get the case color
+     *
+     * @return string
+     */
+    public function color(): string
+    {
+        return __(self::moduleName() . '::enum.' . self::shortName() . '.colors.' . Str::snake($this->name));
+    }
 }

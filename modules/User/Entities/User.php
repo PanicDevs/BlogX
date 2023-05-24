@@ -21,8 +21,9 @@ class User extends Authenticatable implements FilamentUser, HasName
      */
     protected $fillable = [
         UserMCF::EMAIL,
+        UserMCF::USERNAME,
         UserMCF::PASSWORD,
-        UserMCF::AVATAR_IMAGE_URL,
+        UserMCF::AVATAR,
         UserMCF::FIRST_NAME,
         UserMCF::LAST_NAME,
         UserMCF::FULL_NAME,

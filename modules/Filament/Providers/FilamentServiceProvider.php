@@ -18,6 +18,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\TimePicker;
 use Filament\Tables\Columns\Column;
 use Illuminate\Support\ServiceProvider;
+use Modules\Filament\Enums\Context;
 use Throwable;
 
 class FilamentServiceProvider extends ServiceProvider
@@ -127,6 +128,30 @@ class FilamentServiceProvider extends ServiceProvider
             {
                 $this->label = 'Undefined';
             }
+            return $this;
+        });
+        Component::macro('requiredOn', function (Context $iContext): self
+        {
+            $this->isRequired = fn($context) => $context === $iContext->value;
+            return $this;
+        });
+
+        Component::macro('requiredOn', function (Context $iContext): self
+        {
+            $this->isRequired = fn($context) => $context == $iContext->value;
+            return $this;
+        });
+
+        Component::macro('requiredExcept', function (Context $iContext): self
+        {
+            $this->isRequired = fn($context) => $context != $iContext->value;
+            return $this;
+        });
+
+        TextInput::macro('preventAutocomplete', function ()
+        {
+            $this->autocomplete = 'new-' . $this->getName();
+
             return $this;
         });
 
@@ -573,6 +598,34 @@ class FilamentServiceProvider extends ServiceProvider
                 $this->placeholder = 'Undefined';
             }
 
+            return $this;
+        })(...);
+    }
+
+    /**
+     * Required On Ability as a closure
+     *
+     * @return Closure
+     */
+    private function requiredOnAbility(): Closure
+    {
+        return (function (Context $iContext): self
+        {
+            $this->isRequired = fn($context) => $context == $iContext->value;
+            return $this;
+        })(...);
+    }
+
+    /**
+     * Required Except Ability as a closure
+     *
+     * @return Closure
+     */
+    private function requiredExceptAbility(): Closure
+    {
+        return (function (Context $iContext): self
+        {
+            $this->isRequired = fn($context) => $context != $iContext->value;
             return $this;
         })(...);
     }

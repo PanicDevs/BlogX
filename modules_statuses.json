@@ -3,5 +3,6 @@
     "Theme": true,
     "User": true,
     "Support": true,
-    "Filament": true
+    "Filament": true,
+    "File": true
 }

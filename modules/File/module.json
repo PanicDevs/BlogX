@@ -1,0 +1,17 @@
+{
+    "name": "File",
+    "alias": "file",
+    "description": "BlogX File module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\File\\Providers\\FileServiceProvider"
+    ],
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "file",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}

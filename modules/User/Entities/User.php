@@ -77,7 +77,7 @@ class User extends Authenticatable implements FilamentUser, HasName, HasMedia
      * @return string
      */
     public function getFilamentName(): string
-    {
-        return "$this->first_name $this->last_name";
+    { 
+        return "$this->getAttribute(UserMCF::FULL_NAME)";
     }
 }

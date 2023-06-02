@@ -63,10 +63,10 @@ class User extends Authenticatable implements FilamentUser, HasName
     public function canAccessFilament(): bool
     {
         return in_array(
-                $this->getAttribute(UserMCF::ACCOUNT_TYPE),
+                $this->{UserMCF::ACCOUNT_TYPE},
                 [AccountType::Admin, AccountType::Blogger],
             )
-            && $this->getAttribute(UserMCF::ACCOUNT_STATUS) === AccountStatus::Free;
+            && $this->{UserMCF::ACCOUNT_STATUS} === AccountStatus::Free;
     }
 
     /**
@@ -75,7 +75,7 @@ class User extends Authenticatable implements FilamentUser, HasName
      * @return string
      */
     public function getFilamentName(): string
-    { 
-        return "$this->getAttribute(UserMCF::FULL_NAME)";
+    {
+        return $this->{UserMCF::FULL_NAME};
     }
 }

@@ -4,5 +4,6 @@
     "User": true,
     "Support": true,
     "Filament": true,
-    "File": true
+    "File": true,
+    "Category": true
 }

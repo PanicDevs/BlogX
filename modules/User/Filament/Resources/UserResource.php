@@ -3,17 +3,20 @@
 namespace Modules\User\Filament\Resources;
 
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\Fieldset;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\SpatieMediaLibraryFileUpload as FileUpload;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\BadgeColumn;
-use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\SpatieMediaLibraryImageColumn as ImageColumn;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Filters\SelectFilter;
 use Illuminate\Database\Eloquent\Model;
 use Modules\Filament\Contracts\ExportableSchema;
+use Modules\Filament\Enums\Context;
 use Modules\Filament\Traits\WithResourceHelper;
 use Modules\User\Entities\User;
 use Modules\User\Enums\AccountStatus;
@@ -23,7 +26,7 @@ use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
-use Modules\User\MCF\UserMCF;
+use Modules\User\Fields\UserFields;
 use Modules\User\Schema\UserSchema;
 use Throwable;
 
@@ -94,22 +97,23 @@ class UserResource extends Resource implements ExportableSchema
     private static function personalInfoSchema(): array
     {
         return [
-            FileUpload::make(UserMCF::AVATAR)
+            FileUpload::make(UserFields::AVATAR)
+                      ->collection(UserFields::AVATAR)
                       ->image()
                       ->avatar()
                       ->columnSpanFull(),
 
-            TextInput::make(UserMCF::FIRST_NAME)
+            TextInput::make(UserFields::FIRST_NAME)
                      ->autoLabel()
                      ->autoPlaceholder()
                      ->required(),
 
-            TextInput::make(UserMCF::LAST_NAME)
+            TextInput::make(UserFields::LAST_NAME)
                      ->autoLabel()
                      ->autoPlaceholder()
                      ->required(),
 
-            RichEditor::make(UserMCF::BIO)
+            RichEditor::make(UserFields::BIO)
                       ->autoLabel()
                       ->autoPlaceholder()
                       ->columnSpanFull(),
@@ -124,35 +128,37 @@ class UserResource extends Resource implements ExportableSchema
     private static function accountInfoSchema(): array
     {
         return [
-            TextInput::make(UserMCF::USERNAME)
+            TextInput::make(UserFields::USERNAME)
                      ->autoLabel()
                      ->autoPlaceholder()
+                     ->preventAutocomplete()
                      ->alpha()
                      ->unique(ignoreRecord: true)
-                     ->autocomplete('new-username')
                      ->required(),
 
-            TextInput::make(UserMCF::EMAIL)
+            TextInput::make(UserFields::EMAIL)
                      ->autoLabel()
                      ->autoPlaceholder()
+                     ->preventAutocomplete()
                      ->email()
                      ->unique(ignoreRecord: true)
-                     ->autocomplete('new-email')
                      ->required(),
 
-            TextInput::make(UserMCF::PASSWORD)
+            TextInput::make(UserFields::PASSWORD)
                      ->autoLabel()
                      ->autoPlaceholder()
-                // ->required()
-                     ->confirmed(UserMCF::PASSWORD_CONFIRMED)
-                     ->autocomplete('new-password')
+                     ->requiredOn(Context::Create)
+                     ->nullable(fn($context) => $context == 'edit')
+                     ->preventAutocomplete()
+                     ->confirmed(UserFields::PASSWORD_CONFIRMED)
                      ->password(),
 
-            TextInput::make(UserMCF::PASSWORD_CONFIRMED)
+            TextInput::make(UserFields::PASSWORD_CONFIRMED)
                      ->autoLabel()
                      ->autoPlaceholder()
-                // ->required()
-                     ->autocomplete('new-password-confirmation')
+                     ->requiredOn(Context::Create)
+                     ->nullable(fn($context) => $context == 'edit')
+                     ->preventAutocomplete()
                      ->password(),
         ];
     }
@@ -165,14 +171,14 @@ class UserResource extends Resource implements ExportableSchema
     private static function accountTypeSchema(): array
     {
         return [
-            Select::make(UserMCF::ACCOUNT_TYPE)
+            Select::make(UserFields::ACCOUNT_TYPE)
                   ->autoLabel()
                   ->autoPlaceholder()
                   ->options(AccountType::pairs())
                   ->disablePlaceholderSelection()
                   ->searchable(),
 
-            Select::make(UserMCF::ACCOUNT_STATUS)
+            Select::make(UserFields::ACCOUNT_STATUS)
                   ->autoLabel()
                   ->autoPlaceholder()
                   ->options(AccountStatus::pairs())
@@ -198,47 +204,49 @@ class UserResource extends Resource implements ExportableSchema
     public static function tableSchema(): array
     {
         return [
-            ImageColumn::make(UserMCF::AVATAR)
+            ImageColumn::make(UserFields::AVATAR)
+                       ->autoLabel()
+                       ->collection(UserFields::AVATAR)
                        ->toggleable()
                        ->circular(),
 
-            TextColumn::make(UserMCF::FIRST_NAME)
+            TextColumn::make(UserFields::FIRST_NAME)
                       ->autoLabel()
                       ->searchable()
                       ->sortable(),
 
-            TextColumn::make(UserMCF::LAST_NAME)
+            TextColumn::make(UserFields::LAST_NAME)
                       ->autoLabel()
                       ->searchable()
                       ->sortable(),
 
-            TextColumn::make(UserMCF::USERNAME)
+            TextColumn::make(UserFields::USERNAME)
                       ->autoLabel()
                       ->searchable()
                       ->sortable(),
 
-            TextColumn::make(UserMCF::EMAIL)
+            TextColumn::make(UserFields::EMAIL)
                       ->autoLabel()
                       ->searchable()
                       ->sortable(),
 
-            BadgeColumn::make(UserMCF::ACCOUNT_TYPE)
+            BadgeColumn::make(UserFields::ACCOUNT_TYPE)
                        ->autoLabel()
-                       ->formatStateUsing(fn(Model $record) => $record->getAttribute(UserMCF::ACCOUNT_TYPE)->trans())
-                       ->color(fn(Model $record) => $record->getAttribute(UserMCF::ACCOUNT_TYPE)->color()),
+                       ->formatStateUsing(fn(Model $record) => $record->getAttribute(UserFields::ACCOUNT_TYPE)->trans())
+                       ->color(fn(Model $record) => $record->getAttribute(UserFields::ACCOUNT_TYPE)->color()),
 
-            BadgeColumn::make(UserMCF::ACCOUNT_STATUS)
+            BadgeColumn::make(UserFields::ACCOUNT_STATUS)
                        ->autoLabel()
-                       ->formatStateUsing(fn(Model $record) => $record->getAttribute(UserMCF::ACCOUNT_STATUS)->trans())
-                       ->color(fn(Model $record) => $record->getAttribute(UserMCF::ACCOUNT_STATUS)->color()),
+                       ->formatStateUsing(fn(Model $record) => $record->getAttribute(UserFields::ACCOUNT_STATUS)->trans())
+                       ->color(fn(Model $record) => $record->getAttribute(UserFields::ACCOUNT_STATUS)->color()),
 
-            TextColumn::make(UserMCF::CREATED_AT)
+            TextColumn::make(UserFields::CREATED_AT)
                       ->autoLabel()
                       ->date()
                       ->toggledHiddenByDefault()
                       ->toggleable(),
 
-            TextColumn::make(UserMCF::UPDATED_AT)
+            TextColumn::make(UserFields::UPDATED_AT)
                       ->autoLabel()
                       ->date()
                       ->toggledHiddenByDefault()
@@ -255,7 +263,15 @@ class UserResource extends Resource implements ExportableSchema
      */
     public static function tableFilters(): array
     {
-        return [];
+        return [
+            SelectFilter::make(UserFields::ACCOUNT_TYPE)
+                        ->options(AccountType::pairs())
+                        ->searchable(),
+
+            SelectFilter::make(UserFields::ACCOUNT_STATUS)
+                        ->options(AccountStatus::pairs())
+                        ->searchable(),
+        ];
     }
 
     /**
@@ -269,6 +285,40 @@ class UserResource extends Resource implements ExportableSchema
     {
         return [
             Tables\Actions\EditAction::make(),
+            Action::make('Limit')
+                  ->action(
+                      function (Model $record, array $data)
+                      {
+                          $record->setAttribute(UserFields::MESSAGE, $data[UserFields::MESSAGE]);
+                          $record->setAttribute(UserFields::LIMITATION_END_DATE, $data[UserFields::LIMITATION_END_DATE]);
+                          $record->setAttribute(UserFields::ACCOUNT_STATUS, AccountStatus::Limited);
+                          $record->save();
+                      },
+                  )
+                  ->icon('heroicon-s-ban')
+                  ->form(
+                      [
+                          DateTimePicker::make(UserFields::LIMITATION_END_DATE),
+                          Textarea::make(UserFields::MESSAGE),
+                      ],
+                  )
+                  ->hidden(fn(Model $record) => $record->getAttribute(UserFields::ACCOUNT_STATUS) == AccountStatus::Limited)
+                  ->requiresConfirmation(),
+
+            Tables\Actions\Action::make('Rescue')
+                                 ->color('success')
+                                 ->action(
+                                     function (Model $record)
+                                     {
+                                         $record->setAttribute(UserFields::MESSAGE, null);
+                                         $record->setAttribute(UserFields::LIMITATION_END_DATE, null);
+                                         $record->setAttribute(UserFields::ACCOUNT_STATUS, AccountStatus::Free);
+                                         $record->save();
+                                     },
+                                 )
+                                 ->icon('heroicon-o-check-circle')
+                                 ->hidden(fn(Model $record) => $record->getAttribute(UserFields::ACCOUNT_STATUS) != AccountStatus::Limited)
+                                 ->requiresConfirmation(),
         ];
     }
 

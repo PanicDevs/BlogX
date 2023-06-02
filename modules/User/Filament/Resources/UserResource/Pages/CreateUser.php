@@ -3,15 +3,10 @@
 namespace Modules\User\Filament\Resources\UserResource\Pages;
 
 use Filament\Forms\Components\Card;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Wizard;
 use Filament\Forms\Components\Wizard\Step;
 use Filament\Resources\Pages\CreateRecord\Concerns\HasWizard;
 use Modules\User\Filament\Resources\UserResource;
 use Filament\Resources\Pages\CreateRecord;
-use Modules\User\MCF\UserMCF;
 use Modules\User\Schema\UserSchema;
 
 class CreateUser extends CreateRecord

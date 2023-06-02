@@ -1,15 +1,15 @@
 {
-    "name": "panicdevs/blogx-filament-theme",
-    "type": "project",
-    "description": "BlogX default filament theme by PanicDevs.",
-    "keywords": ["blogx", "theme", "unique", "panicdevs"],
-    "license": "MIT",
+    "name": "panicdevs/blogx-file-module",
+    "description": "BlogX File module by PanicDevs.",
     "authors": [
         {
             "name": "PanicDevs",
             "email": "help@panicdev.ir"
         }
     ],
+    "require": {
+        "filament/spatie-laravel-media-library-plugin": "^2.0"
+    },
     "extra": {
         "laravel": {
             "providers": [],
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Themes\\Filament\\": ""
+            "Modules\\File\\": ""
         }
     }
 }

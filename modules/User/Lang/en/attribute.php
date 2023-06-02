@@ -1,106 +1,106 @@
 <?php
 
-use Modules\User\MCF\UserMCF;
+use Modules\User\Fields\UserFields;
 use Modules\User\Schema\UserSchema;
 
 return [
-    UserMCF::USERNAME => [
+    UserFields::USERNAME => [
         'label'       => 'Username',
         'placeholder' => 'Enter your username',
     ],
 
-    UserMCF::EMAIL => [
+    UserFields::EMAIL => [
         'label'       => 'Email',
         'placeholder' => 'Enter your email',
     ],
 
-    UserMCF::PASSWORD => [
+    UserFields::PASSWORD => [
         'label'       => 'Password',
         'placeholder' => 'Enter an strong password',
     ],
 
-    UserMCF::PASSWORD_CONFIRMED => [
-        'label'       => 'Password confirmation',
+    UserFields::PASSWORD_CONFIRMED => [
+        'label'       => 'Password Confirmation',
         'placeholder' => 'Enter your password again',
     ],
 
-    UserMCF::AVATAR => [
+    UserFields::AVATAR => [
         'label'       => 'Avatar',
         'placeholder' => 'Select your avatar',
     ],
 
-    UserMCF::FIRST_NAME => [
-        'label'       => 'First name',
+    UserFields::FIRST_NAME => [
+        'label'       => 'First Name',
         'placeholder' => 'Enter your first name',
     ],
 
-    UserMCF::LAST_NAME => [
-        'label'       => 'Last name',
+    UserFields::LAST_NAME => [
+        'label'       => 'Last Name',
         'placeholder' => 'Enter your last name',
     ],
 
-    UserMCF::FULL_NAME => [
-        'label'       => 'Full name',
+    UserFields::FULL_NAME => [
+        'label'       => 'Full Name',
         'placeholder' => 'Enter your full name',
     ],
 
-    UserMCF::BIO => [
+    UserFields::BIO => [
         'label'       => 'Bio',
         'placeholder' => 'Enter a short bio about yourself',
     ],
 
-    UserMCF::MESSAGE => [
+    UserFields::MESSAGE => [
         'label'       => 'Message',
         'placeholder' => 'Enter your message',
     ],
 
-    UserMCF::ACCOUNT_TYPE => [
-        'label'       => 'Account type',
+    UserFields::ACCOUNT_TYPE => [
+        'label'       => 'Account Type',
         'placeholder' => 'Select your account type',
     ],
 
-    UserMCF::ACCOUNT_STATUS => [
-        'label'       => 'Account status',
+    UserFields::ACCOUNT_STATUS => [
+        'label'       => 'Account Status',
         'placeholder' => 'Select your account status',
     ],
 
-    UserMCF::LIMITATION_END_DATE => [
-        'label'       => 'Limitation end date',
+    UserFields::LIMITATION_END_DATE => [
+        'label'       => 'Limitation End Date',
         'placeholder' => 'Select the end date of the limitation',
     ],
 
-    UserMCF::REMEMBER_TOKEN => [
-        'label'       => 'Remember token',
+    UserFields::REMEMBER_TOKEN => [
+        'label'       => 'Remember Token',
         'placeholder' => 'Your remember token',
     ],
 
-    UserMCF::CREATED_AT => [
-        'label'       => 'Created at',
+    UserFields::CREATED_AT => [
+        'label'       => 'Created At',
         'placeholder' => 'Select the creation date',
     ],
 
-    UserMCF::UPDATED_AT => [
-        'label'       => 'Last modified at',
+    UserFields::UPDATED_AT => [
+        'label'       => 'Last Modified At',
         'placeholder' => 'Select the update date',
     ],
 
-    UserMCF::DELETED_AT => [
-        'label'       => 'Deleted at',
+    UserFields::DELETED_AT => [
+        'label'       => 'Deleted At',
         'placeholder' => 'Select the deletion date',
     ],
 
     UserSchema::PERSONAL_INFO => [
-        'label'       => 'Personal info',
+        'label'       => 'Personal Info',
         'description' => 'Select the deletion date',
     ],
 
     UserSchema::ACCOUNT_INFO => [
-        'label'       => 'Account info',
+        'label'       => 'Account Info',
         'description' => 'Select the deletion date',
     ],
 
     UserSchema::ACCOUNT_TYPE => [
-        'label'       => 'Account type',
+        'label'       => 'Account Type',
         'description' => 'Select the deletion date',
     ],
 ];

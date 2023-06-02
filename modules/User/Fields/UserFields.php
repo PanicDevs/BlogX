@@ -1,8 +1,8 @@
 <?php
 
-namespace Modules\User\MCF;
+namespace Modules\User\Fields;
 
-class UserMCF
+class UserFields
 {
     public const EMAIL               = 'email';
     public const USERNAME            = 'username';

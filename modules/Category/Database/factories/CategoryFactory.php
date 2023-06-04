@@ -3,6 +3,8 @@
 namespace Modules\Category\Database\factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Modules\Category\Entities\Category;
+use Modules\Category\Enums\CategoryStatus;
 use Modules\Category\Fields\CategoryFields;
 
 class CategoryFactory extends Factory
@@ -12,14 +14,14 @@ class CategoryFactory extends Factory
      *
      * @var string
      */
-    protected $model = \Modules\Category\Entities\Category::class;
+    protected $model = Category::class;
 
     /**
      * Define the model's default state.
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             CategoryFields::PARENT_ID       => null,
@@ -28,7 +30,7 @@ class CategoryFactory extends Factory
             CategoryFields::SUMMARY         => $this->faker->text(rand(30,100)),
             CategoryFields::COVER_IMAGE_URL => null,
             CategoryFields::ICON            => null,
-            CategoryFields::STATUS          => rand(0,1),
+            CategoryFields::STATUS          => CategoryStatus::DISABLE,
         ];
     }
 }

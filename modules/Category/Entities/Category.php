@@ -2,16 +2,18 @@
 
 namespace Modules\Category\Entities;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Modules\Category\Database\factories\CategoryFactory;
+use Modules\Category\Enums\CategoryStatus;
 use Modules\Category\Fields\CategoryFields;
 
 class Category extends Model
 {
-    use SoftDeletes;
+    use HasFactory, SoftDeletes;
 
     /**
      * The attributes that are mass assignable.
@@ -28,6 +30,14 @@ class Category extends Model
         CategoryFields::STATUS,
     ];
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        CategoryFields::STATUS => CategoryStatus::class,
+    ];
     /**
      * Define a new factory for this model.
      *

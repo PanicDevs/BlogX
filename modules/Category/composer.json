@@ -1,0 +1,22 @@
+{
+    "name": "panicdevs/blogx-category-module",
+    "description": "BlogX Category module by PanicDevs.",
+    "authors": [
+        {
+            "name": "PanicDevs",
+            "email": "help@panicdev.ir"
+        }
+    ],
+    "require": {},
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Category\\": ""
+        }
+    }
+}

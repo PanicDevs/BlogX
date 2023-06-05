@@ -1,0 +1,17 @@
+{
+    "name": "Category",
+    "alias": "category",
+    "description": "BlogX Category module",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\Category\\Providers\\CategoryServiceProvider"
+    ],
+    "files": [
+        "Helpers/helpers.php"
+    ],
+    "minimumCoreVersion": "0",
+    "title": "category",
+    "version": 0.1,
+    "author": "PanicDevs Co"
+}
